@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dealModule">
+<head>
+    <title>Online Deals</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/angular.min.js"></script>
+    <!--<link href="css/styles.css" rel="stylesheet">-->
+    <script src="js/jquery-1.11.1.min.js"></script>
+
+
+    <!--<link href="css/styles.css" rel="stylesheet">-->
+</head>
+
+<script>
+    function show_Page(index) {
+			$("#main").hide().removeClass('hide');
+			$("#newUser").hide().removeClass('hidden');
+			$("#login").hide().removeClass('hidden');
+			$("#contactUs").hide().removeClass('hidden');
+            $("#aboutUs").hide().removeClass('hidden');
+            $("#searchItem").hide().removeClass('hidden');
+
+			switch(index){
+				case 0: $("#main").show();
+						break;
+				case 1: $("#login").show();
+						break;
+				case 2: $("#newUser").show();
+						break;
+				case 3: $("#contactUs").show();
+						break;
+				case 4: $("#aboutUs").show();
+				        break;
+				case 5: $("#searchItem").show();
+                		break;
+                case 6: $("#findMore").show();
+                		break;
+                case 7: $("#userMain").show();
+                	    $("#barLoginMenu").hide().removeClass('hidden');
+                		$("#barLogoutMenu").removeClass('hidden');
+                		$("#barAccountMenu").removeClass('hidden');
+                		$("#barShoppingMenu").removeClass('hidden');
+                		$("#barLogoutMenu").show();
+                		$("#barAccountMenu").show();
+                		$("#barShoppingMenu").show();
+                		$("#userMainSum").show();
+                		break;
+                case 8: $("#main").show();
+                		$("#barLoginMenu").show().removeClass('hidden');
+                		$("#barLogoutMenu").hide().removeClass('hidden');
+                		$("#barAccountMenu").hide().removeClass('hidden');
+                		$("#barShoppingMenu").hide().removeClass('hidden');
+                		break;
+
+			}
+		}
+
+
+</script>
+<script src="function/function.js"></script>
+
+<body class="Mybody">
+
+<!-- NavBar -->
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <a href="javascript: show_Page(0)" class="navbar-brand">Welcome</a>
+        <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse navHeaderCollapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="javascript: show_Page(0)">Home</a></li>
+                <li><a href="javascript: show_Page(1)" id="barLoginMenu">Login</a></li>
+                <li><a href="javascript: logOut()" class="hidden" id="barLogoutMenu">LogOut</a></li>
+                <li><a href="javascript: accnt_sumary()" class="hidden" id="barAccountMenu">Account</a></li>
+                <li><a href="javascript: accnt_shoppingCart()" class="hidden" id="barShoppingMenu">Shopping Cart</a>
+                </li>
+                <li><a href="javascript: show_Page(4)">About</a></li>
+                <li><a href="javascript: show_Page(3)">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Main -->
+<div id="main">
+    <div class="container col-md-8 col-md-offset-2">
+        <div class="jumbotron jumbotron-styled text-center">
+            <h1>Hello, Guests!</h1>
+            <p>Here you can buy item on deals</p>
+            <a  href="javascript: show_Page(6)" class="btn btn-info">Find Out More!</a>
+        </div>
+    </div>
+    <div class="container col-md-8 col-md-offset-2">
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+
+            <div class="col-md-5">
+                <h3><a href="#">Search as a Guest</a></h3>
+                <p>You don't have to create an account to search and view items. Search for items and decide whether you want to be a part of us... Best of all, it's free!!</p>
+                <a href="javascript: accnt_search_categories(5)" class="btn btn-default">Search Now!!</a>
+            </div>
+
+            <div class="col-md-5">
+                <h3><a href="#">Create Account</a></h3>
+                <p>Create an account and buy items....</p>
+                <a href="javascript: show_Page(2)" class="btn btn-default">Sign up Now!!</a>
+            </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+</div>
+
+
+<!-- New User -->
+<div class="container hidden col-md-4 col-md-offset-4" id="newUser">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">New User Registration</h3>
+        </div>
+        <div class="panel-body">
+            <form role="form">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="fName" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="lName" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="fullAddress" placeholder="Address">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="phoneNumber" placeholder="Phone number">
+                </div>
+
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password1" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password2" placeholder="Confirm Password">
+                </div>
+
+                <hr>
+                <a href="javascript: insert_new_user($('#fName').val(),$('#lName').val(),$('#fullAddress').val(),$('#phoneNumber').val(),$('#email').val(),$('#password1').val())" class="btn btn-primary btn-block">Submit</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Login -->
+<div class="container hidden col-md-4 col-md-offset-4" id="login">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Login</h3>
+        </div>
+        <div class="panel-body">
+            <form role="form">
+                <div class="form-group">
+                    <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+                </div>
+                <a href="javascript: login($('#inputEmail1').val(), $('#inputPassword1').val())"
+                   class="btn btn-info btn-block">Submit!</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- About us -->
+<div class="col-md-8 col-md-offset-2 hidden" id="aboutUs">
+    <div class="container col-md-8 col-md-offset-2">
+        <div class="jumbotron jumbotron-styled text-center">
+            <h1>Hello, Guests!</h1>
+            <p>Here you can buy item on deals</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Contact Us -->
+<div class="container hidden col-md-6 col-md-offset-3" id="contactUs">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Contact Us</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <input type="email" class="form-control" id="cMsgFrom" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="cMsgSubject" placeholder="Subject">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" id="cMsgComment" rows="8" placeholder="Describe your enquiry"></textarea>
+            </div>
+            <hr>
+            <a href="javascript: insert_new_msg($('#cMsgFrom').val(), 'admin', $('#cMsgSubject').val(), $('#cMsgComment').val(), true, 0);"
+               class="btn btn-primary btn-block">Submit</a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Search Item-->
+<!--<div class="container hidden col-md-6 col-md-offset-3" id="searchItem">-->
+    <!--<div class="panel panel-primary">-->
+        <!--<div class="panel-heading">-->
+            <!--<h3 class="panel-title">Search Items</h3>-->
+        <!--</div>-->
+        <!--<div class="panel-body" ng-controller="AccntSearchController" id="searchCategory">-->
+            <!--<form role="form">-->
+                <!--<div class="form-group">-->
+                    <!--<input type="email" class="form-control" id="itemName" placeholder="Item Name">-->
+                <!--</div>-->
+                <!--<div class="dropdown">-->
+                    <!--<select class="form-control" id="selectItemCategory">-->
+                        <!--<option ng-repeat="item in searchCategories" ng-bind="item.title"></option>-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<hr>-->
+                <!--<a  href="javascript: accnt_search_result($('#itemName').val(), $('#selectItemCategory option:selected').text(), null, null)" class="btn btn-info btn-block">Submit!</a>-->
+            <!--</form>-->
+
+            <!--<table>-->
+                <!--<tr>-->
+                    <!--<th>Item Name</th>-->
+                    <!--<th>Item Link</th>-->
+                    <!--<th>Item Description</th>-->
+                <!--</tr>-->
+                <!--<tr ng-repeat="item in items">-->
+                    <!--<td>{{item.title}}</td>-->
+                    <!--<td>{{item.link}}</td>-->
+                    <!--<td>{{item.description}}</td>-->
+                <!--</tr>-->
+            <!--</table>-->
+
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<input ng-model="itemModel.title" />
+<input ng-model="itemModel.link" />
+<div ng-controller="SearchController">
+    <!--<p>The ID is {{itemsResult.title}}</p>-->
+    <!--<p>The content is {{itemsResult.link}}</p>-->
+
+    <table>
+        <tr>
+            <th>Item Name</th>
+            <th>Item Link</th>
+            <th>Item Description</th>
+        </tr>
+        <tr ng-repeat="item in itemsResult">
+            <td>{{item.title}}</td>
+            <td>{{item.link}}</td>
+            <td>{{item.description}}</td>
+        </tr>
+    </table>
+</div>
+
+
+<script src="js/bootstrap.js"></script>
+
+</body>
+
+</html>
