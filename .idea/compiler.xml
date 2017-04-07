@@ -4,8 +4,6 @@
     <bytecodeTargetLevel>
       <module name="e-commerce_main" target="1.8" />
       <module name="e-commerce_test" target="1.8" />
-      <module name="WebApp_main" target="1.5" />
-      <module name="WebApp_test" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
