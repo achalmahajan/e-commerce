@@ -15,12 +15,12 @@ import java.util.List;
 public class ShoppingCartService {
 
     private List<Item> cart = Arrays.asList(
-            new Item("First Item", "First Item Link", "First Item description"),
-            new Item( "Third Item", "Third Item Link", "Third Item description"));
+            new Item(),
+            new Item());
 
     private List<Item> cart2 = Arrays.asList(
-            new Item( "Second Item", "Second Item Link", "Second Item description"),
-            new Item("Third Item", "Third Item Link", "Third Item description"));
+            new Item( ),
+            new Item());
 
     private HashMap<Integer,List<Item>> cartMap = new HashMap<Integer, List<Item>>(){{
         put(1,cart);

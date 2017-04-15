@@ -13,10 +13,6 @@ import java.util.List;
 @Service
 public class ItemService {
 
-//    private List<Item> items = Arrays.asList(
-//            new Item( "First Item", "First Item Link", "First Item description"),
-//            new Item( "Second Item", "Second Item Link", "Second Item description"),
-//            new Item( "Third Item", "Third Item Link", "Third Item description"));
 
     XmlParser xmlParser = new XmlParser();
 
@@ -24,7 +20,7 @@ public class ItemService {
         return xmlParser.getItems();
     }
 
-//    public Item getItem(String title){
-//        return items.stream().filter(i -> i.getTitle().equals(title)).findFirst().get();
-//    }
+    public Item getItem(String title){
+        return xmlParser.getItems().stream().filter(i -> i.getTitle().equals(title)).findFirst().get();
+    }
 }

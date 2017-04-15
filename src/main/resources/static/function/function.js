@@ -53,59 +53,20 @@ $(function(){
 
 ////////////////////////////ANGULAR JS///////////////////////////////
 
-
-
-var app = angular.module('test', []);
-app.controller('myController', ['$scope', '$http', function($scope, $http) {
-  $scope.clickButton() = function() {
-    $http.get('http://192.168.0.19:8080/items').success(function(data) {
-        $scope.items = data;
-      });
-  }
-
-}]);
-
-
-
-
-
 var myapp = angular.module('dealModule', []);
 
 
-myapp.controller('SearchController', function($scope, $http) {
-    $http.get('http://localhost:8080/items').success(function(data){
-    $scope.itemsResult = data;
-    });
-});
-
-//myapp.controller('AccntSearchController', function($scope) {
-//    $scope.searchCategories = new Array();
-//});
-//
-//
-//var searchCategories;//done checking
-//function accnt_search_categories(moveToPage){
-//	$.ajax({
-//	  type: "GET",
-//	  url: "http://localhost:8080/items",
-//	  data: {}
-//	})
-//	  .done(function( msg ) {
-//	    searchCategories = msg;
-//		if (moveToPage !=-1 ){
-//			var $scope = angular.element($("#searchCategory")).scope();
-//	   		$scope.$apply(function(){
-//				$scope.searchCategories = new Array();
-//				$scope.searchCategories = searchCategories;
-//    		});
-//			show_Page(moveToPage);
-//		}else{
-//			var $scope = angular.element($("#newItemSale")).scope();
-//	   		$scope.$apply(function(){
-//				$scope.searchCategories = new Array();
-//				$scope.searchCategories = searchCategories;
-//    		});
-//		}
-//		alert(searchCategories[0]['Category'])
-//	  });
-//}
+    myapp.controller('SearchController', ['$scope', '$http', function($scope, $http) {
+    var url = "/items";
+    $scope.items = new Array();
+    $http({
+    method: 'GET',
+         url: url
+    }).
+    success(function(status) {
+        $scope.items = status;
+    })
+    .error(function(data, status) {
+                    alert(status);
+                });
+    }]);

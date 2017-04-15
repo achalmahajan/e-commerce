@@ -21,14 +21,16 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
-
+// Get all Items
     @RequestMapping(method = RequestMethod.GET)
     public List<Item> getAllItems(){
         return itemService.getAllItems();
     }
 
-//    @RequestMapping("/{title}")
-//    public Item getItem(@PathVariable String title){
-//        return itemService.getItem(title);
-//    }
+    //Get individual Item
+    @RequestMapping("/{title}")
+    public Item getItem(@PathVariable String title){
+        System.out.println("Path Variable" + title);
+        return itemService.getItem(title);
+    }
     }

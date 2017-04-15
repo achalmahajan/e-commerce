@@ -9,20 +9,24 @@ public class Item {
 
     private String title;
     private String link;
+    private String content;
     private String description;
-    private Date pubDate;
+    private String pubDate;
+    private String thumbnailLink;
 
 
     public Item() {
     }
 
-    public Item(String title, String link, String description) {
+    public Item(String title, String link, String description, String pubDate, String content, String thumbnailLink) {
 
 
         this.title = title;
         this.link = link;
         this.description = description;
-//        this.pubDate = pubDate;
+        this.pubDate = pubDate;
+        this.content = content;
+        this.thumbnailLink = thumbnailLink;
     }
 
     public String getTitle() {
@@ -49,11 +53,27 @@ public class Item {
         this.description = description;
     }
 
-    public Date getPubDate() {
+    public String getPubDate() {
         return pubDate;
     }
 
-    public void setPubDate(Date pubDate) {
+    public void setPubDate(String pubDate) {
         this.pubDate = pubDate;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getThumbnailLink() {
+        return thumbnailLink;
+    }
+
+    public void setThumbnailLink(String thumbnailLink) {
+        this.thumbnailLink = thumbnailLink;
     }
 }
