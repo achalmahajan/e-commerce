@@ -8,7 +8,7 @@ function login(Email, Password){
 	alert(Email+" "+Password);
 	$.ajax({
 	  type: "POST",
-	  url: "database/accntLogin.php",
+	  url: "",
 	  data: {
 	  email: Email,
 	  password: Password}
